@@ -1,0 +1,9 @@
+.ui-page{
+    background-color: #dddad8;
+    background-image: url('background.jpg');
+
+}
+label.error{
+    color: red;
+    font-weight: bold;
+}

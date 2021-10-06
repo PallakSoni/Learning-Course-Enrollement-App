@@ -1,0 +1,318 @@
+<!--
+
+Mobile Web Application
+Created by: Palak Soni
+Student Number: 8639076
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Register Course App</title>
+    <!-- jQuery-->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <!-- jQuery Mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <!-- jQuery Mobile CSS-->
+    <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+    <!-- jQuery Validation lib-->
+    <script src="js/lib/jquery.validate.js"></script>
+    <!-- Created scripts-->
+    <script src="js/database.js"></script>
+    <script src="js/finalDAL.js"></script>
+    <script src="js/finalFacade.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/global.js"></script>
+    <!-- created stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<!--Home/Introduction Page -->
+    <div data-role="page" id="homePage">
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1 >Home</h1>
+
+        </header>
+        <section data-role="section">
+            <h2 align="center" style="color: #73939c;">The Learning Experience</h2>
+
+        <div>
+
+            <img src="css/geometry-1023846_1920.jpg" height="80%" width="100%"/>
+            <p>The word learning is used routinely in discussions about teaching in higher education, so it’s important to clarify what we are referring to when we talk about learning. Educational researchers agree that learning is much deeper than memorization and information recall.</p>
+             </div>
+            <div data-role="content">
+                <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b">
+                    <h3 style="color: #73939c;">Foundation of Success </h3>
+                    <p >Profound changes to the world of computer applications have created the need for a new kind of software development professional. As a result of explosive growth in the use of mobile devices, a growing appetite for consumer applications across all demographics, and emerging digital technologies, there is a need for entrepreneurial savvy within Canadian companies to effectively compete globally. </p>
+                </div>
+                <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b">
+                    <h3 style="color: #73939c;">Financial Assistance</h3>
+                    <p >The Ontario Student Assistance Program (OSAP) is a needs-based program designed to help Ontario students cover the cost of post-secondary education. Funded by the federal and provincial governments, OSAP is intended to promote equality of opportunity for post-secondary studies through direct financial assistance for educational costs and living expenses. These interest-free loans are intended to supplement your financial resources and those of your family. The majority of students apply for loan assistance</p>
+                </div>
+                <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-theme="b">
+                    <h3 style="color: #73939c;">Campus Info</h3>
+                    <p>A campus is traditionally the land on which a college or university and related institutional buildings are situated. Usually a college campus includes libraries, lecture halls, residence halls, student centers or dining halls, and park-like settings.</p>
+                </div>
+            </div>
+
+
+        </section>
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <div id="homeNavbar" data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#homePage" data-icon="home" data-theme="b" class="ui-btn-active ui-state-persist">Home</a> </li>
+                    <li><a href="#registerPage" data-icon="user" data-theme="b">Register</a></li>
+                    <li><a href="#reviewPage" data-icon="edit" data-theme="b">Review</a></li>
+                    <li><a href="#servicePage" data-icon="grid" data-theme="b">Service</a></li>
+                    <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+
+<!-- Register Page-->
+<div data-role="page" id="registerPage">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>Register</h1>
+    </header>
+    <section data-role="content">
+        <div id="divMain">
+            <h2 align="center">Register to Learn</h2>
+            <h3 style="color: #73939c;">Personal Info</h3>
+
+            <form id="registerForm" name="registerForm" data-ajax="false">
+                <label for="txtFullName">Full Name: </label>
+                <input type="text" id="txtFullName" name="txtFullName"
+                class="required" data-theme="b" data-clear-btn="true" placeholder="Enter Full Name">
+
+                <label for="txtDOB">DOB: </label>
+                <input type="date" id="txtDOB" name="txtDOB"
+                       class="required" data-theme="b" data-clear-btn="true" placeholder="mm/dd/yyyy">
+
+                <label for="PSCourseCombobox">Course:</label>
+                <select data-theme="b" id="PSCourseCombobox">
+                    <option SELECTED value="Default">Maths</option>
+                    <option value="English">English</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Medicine">Medicine</option>
+                </select>
+                <h3 style="color: #73939c;">Security Info</h3>
+
+                <label for="txtEmail">Email: </label>
+                <input type="text" id="txtEmail" name="txtEmail"
+                       class="required" data-theme="b" data-clear-btn="true" placeholder="Enter Email Address">
+
+                <label for="txtPassword">Password: </label>
+                <input type="text" id="txtPassword" name="txtPassword"
+                       class="required" data-theme="b" data-clear-btn="true" placeholder="Enter password">
+
+                <label for="txtPasswordrep">Repeat Password: </label>
+                <input type="text" id="txtPasswordrep" name="txtPasswordrep"
+                       class="required" data-theme="b" data-clear-btn="true" placeholder="Re-Enter Password">
+
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <div data-role="content" >
+                    <a href="#popRegistered" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">Confirm</a>
+                    <div data-role="popup" id="popRegistered" class="ui-content" style="max-width: 280px">
+                        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                        <p>Yayy!! You have entered required info.</p>
+
+                    </div>
+                </div>
+              <button type="button"  id="btnRegister" name="btnRegister" data-icon="arrow-r" data-theme="b" style="background-color:#73939c ">
+                    Register
+                </button>
+            </form>
+        </div>
+
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <div id="registerNavbar" data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#homePage" data-icon="home" data-theme="b" >Home</a> </li>
+                <li><a href="#registerPage" data-icon="user" data-theme="b" class="ui-btn-active ui-state-persist">Register</a></li>
+                <li><a  href="#reviewPage" data-icon="edit" data-theme="b">Review</a></li>
+                <li><a href="#servicePage" data-icon="grid" data-theme="b">Service</a></li>
+                <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+
+<!-- Review Page-->
+<div data-role="page" id="reviewPage">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>Review</h1>
+    </header>
+
+    <section data-role="content" >
+
+            <h2 align="center">Registered List</h2>
+
+            <ul id="reviewlist" data-role="listview" class="ui-listview-inset">
+                <li>
+                    <a href="#reviewModifyPage" data-theme="b">
+                        <h3>Palak Soni</h3>
+                        <h4>DOB: 11/12/1998</h4>
+                        <h4>Course: Programming</h4>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="#reviewModifyPage" data-theme="b">
+                        <h3>Bhavya</h3>
+                        <h4>DOB: 1/1/1988</h4>
+                        <h4>Course: Medicine</h4>
+
+                    </a>
+                </li>
+            </ul>
+
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <div id="reviewNavbar" data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#homePage" data-icon="home" data-theme="b" >Home</a> </li>
+                <li><a href="#registerPage" data-icon="user" data-theme="b" >Register</a></li>
+                <li><a href="#reviewPage" data-icon="edit" data-theme="b" class="ui-btn-active ui-state-persist">Review</a></li>
+                <li><a  href="#servicePage" data-icon="grid" data-theme="b">Service</a></li>
+                <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+
+<!-- Review Modify Page-->
+<div data-role="page" id="reviewModifyPage">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>Review</h1>
+    </header>
+    <section>
+        <h2 align="center">Modify the Registered List</h2>
+        <form id="reviewModifyForm" name="reviewModifyForm" data-ajax="false">
+            <label for="rMtxtFullName">Full Name: </label>
+            <input type="text" id="rMtxtFullName" name="rMtxtFullName"
+                   class="required" data-theme="b" data-clear-btn="true" placeholder="Enter Full Name">
+
+            <label for="rMtxtDOB">DOB: </label>
+            <input type="date" id="rMtxtDOB" name="rMtxtDOB"
+                   class="required" data-theme="b" data-clear-btn="true" placeholder="mm/dd/yyyy">
+
+            <label for="PSCourseCombobox">Course:</label>
+            <select data-theme="b" id="rMCourseCombobox">
+                <option SELECTED value="Default">Maths</option>
+                <option value="English">English</option>
+                <option value="Programming">Programming</option>
+                <option value="Arts">Arts</option>
+                <option value="Medicine">Medicine</option>
+            </select>
+
+
+                <a data-role="button" data-theme="a" data-rel="back" style="background-color: #73939c;  width: 25%; float: left">
+                Cancel   </a>
+                <button type="button" id="btnDelete" name="btnDelete" data-theme="a" style="  width: 25%; float: left; background-color: #73939c;" data-theme="b" >Delete</button>
+                <button type="button" id="btnUpdate" name="btnUpdate" data-theme="a" style="background-color: #73939c;  width: 25%; float: left;">Update</button>
+
+        </form>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <div id="reviewmodifyNavbar" data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#homePage" data-icon="home" data-theme="b" >Home</a> </li>
+                <li><a href="#registerPage" data-icon="user" data-theme="b" >Register</a></li>
+                <li><a href="#reviewPage" data-icon="edit" data-theme="b" class="ui-btn-active ui-state-persist">Review</a></li>
+                <li><a  href="#servicePage" data-icon="grid" data-theme="b">Service</a></li>
+                <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+
+<!--Services -->
+<div data-role="page" id="servicePage">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>Services</h1>
+    </header>
+
+    <section >
+
+
+        <img src="css/volunteer-1550328_1920.jpg" height="60%" width="100%"/>
+        <div data-role="content">
+            <a href="#aboriginalService" class="ui-btn">Aboriginal Services</a>
+            <a href="#counsellingService" class="ui-btn">Counselling Service</a>
+            <a href="#medicalServices" class="ui-btn">Medical Care</a>
+        </div>
+        <div data-role="panel" id="aboriginalService" data-display="reveal" data-position="right">
+            <p>Indigenizing post-secondary education refers to being inclusive of Indigenous knowledge, experiences, students, scholars and materials as well as developing spaces that reflect Indigenous ways of learning and knowing. It is one of the calls to action provided in Honouring the Truth, Reconciling the Future, the 2015 report of the Truth and Reconciliation Commission of Canada.
+
+                campus is committed to the process of reconciliation and support for Canada's Indigenous people.</p>
+
+        </div>
+        <div data-role="panel" id="counsellingService" data-display="reveal" data-position="right">
+            <p>
+                According to the American Counseling Association, counseling is defined as, "a professional relationship that empowers diverse individuals, families, and groups to accomplish mental health, wellness, education, and career goals." Counseling involves helping people make needed changes in ways of thinking, feeling, and behaving, and is a goal-based collaborative process, involving a non-judgmental, supportive counselor who works with a client in telling his or her story, setting viable goals, and developing strategies and plans necessary to accomplish these goals. For some people this process takes a small amount of time, in some cases as little as one or two sessions; for others, the process may last longer.
+            </p>
+        </div>
+        <div data-role="panel" id="medicalServices" data-display="reveal" data-position="right">
+           <p>
+               If you feel unwell or have any medical concerns from your  student email or phone 519-748-5220 ext. 3679 to arrange a time to speak to a health care professional.
+               Please be prepared with your student ID number, telephone number and the concern you are contacting us about.
+               When receiving a call from our health care team, it may be from a blocked number.
+               Our medical clinic can only provide service to students who are currently residing in Ontario.
+               If you require a prescription renewal, please phone your pharmacist, and they will fax us a refill request. Our fax number is 519-748-3509.
+           </p>
+        </div>
+    </section>
+
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <div id="serviceNavbar" data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#homePage" data-icon="home" data-theme="b" >Home</a> </li>
+                <li><a href="#registerPage" data-icon="user" data-theme="b" >Register</a></li>
+                <li><a href="#reviewPage" data-icon="edit" data-theme="b" >Review</a></li>
+                <li><a href="#servicePage" data-icon="grid" data-theme="b" class="ui-btn-active ui-state-persist">Service</a></li>
+                <li><a href="#aboutPage" data-icon="info" data-theme="b">About</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+
+<!-- About Page-->
+<div data-role="page" id="aboutPage">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>About Me</h1>
+    </header>
+    <section data-role="content">
+
+
+        <h2 id="aboutinfo" >
+            <strong>
+                Developed By: Palak Soni <br>
+                ID: 8639076 <br>
+                Project: Final Assignment
+                <p>299 Doon Valley Dr., <br>Kitchener<br>Ontario </p>
+            </strong>
+        </h2>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <div id="aboutNavbar" data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#homePage" data-icon="home" data-theme="b" >Home</a> </li>
+                <li><a href="#registerPage" data-icon="user" data-theme="b" >Register</a></li>
+                <li><a href="#reviewPage" data-icon="edit" data-theme="b" >Review</a></li>
+                <li><a href="#servicePage" data-icon="grid" data-theme="b" >Service</a></li>
+                <li><a href="#aboutPage" data-icon="info" data-theme="b" class="ui-btn-active ui-state-persist">About</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+
+
+</body>
+</html>
